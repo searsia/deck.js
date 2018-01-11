@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=1024, user-scalable=no">
 
-  <title>Searsia - Advertisements and query recommendations; No tracking</title>
+  <title>Searsia - Web search; No tracking</title>
 
   <link rel="icon" href="images/searsia-logo.png">
 
@@ -36,6 +36,38 @@
 
     <!-- Begin slides. Just make elements with a class of slide. -->
 
+
+<!--
+At Searsia we develop open source software for federated web search engines. I will talk about our attempts to build these systems WITHOUT tracking our users.
+
+In surveillance capitalism, companies compete by collecting as much data as possible through surveillance. They sell that data, or they use the data to predict who is most likely to buy a product or service.
+
+Why is surveillance so profitable? When you use services from for instance Google or Facebook, they have to explain why they collect your data in their terms-of-service: You know, the lengthy disclaimer that your accepted without reading.
+
+An example of such a service are query autocompletions by Google. Google stores the queries of all their users. They effectively  predict what you search for, so you can save keystrokes on your mobile phone while searching. 
+
+This advertisement for a pain killer is only effective to people that are in pain. If you are Facebook or Google, you will be able to find the people among your users that are likely in pain, making such an advertisement much profitable
+
+Companies would like you to think that they MUST collect data to improve services and show targeted advertisements. We work at Searsia to debunk this.  
+
+Let's have a closer look at query autocompletions. Last year, Google actively promoted nazi propaganda for innocent queries like "did the h", and even worse, the first results for those queries would be pages from neo-nazi sites like Stormfront that deny that the holocaust happened.
+
+Many small organizations and individuale were damaged by autocompletions. There have been lawsuits in France, Italy, Germany, Japan, where individuals could for instance not get a job because Google suggested offensive completions for their name. Google started to actively filter such completions after these lawsuits.
+
+A study by Baker and Potts shows that "Google produces suggested terms which could be viewed as racist, sexist or homophobic (...)"
+
+At Searsia, we do not track user queries for autocompletions. Instead, we use the anchor texts of web pages, that is, the text of hyperlinks. We compared its performance with autocompletion that use user queries for general web search.
+
+Our approach that uses hyperlinks is almost as effective as the approach that uses user data. The results show that for short queries, we need 1 more keystroke to predict the full user query. For long queries, our approach outperforms the approach uses user data.
+
+Now, you might think: Sure, you can improve services without tracking people, but it is impossible to target advertisements without tracking people. Not quite. Remember Searsia is a search engine. Users tell a search engine what they are looking for.
+
+If you are looking for a car, we can show you a car. The advertisement is based on the search terms, not on the person. 
+
+
+
+-->
+
     <section class="slide">
       <h1>Searsia
         <img src="images/searsia-logo.png" style="height:1em;display:inline-block;vertical-align:bottom;margin-bottom:0.1em;"><br>
@@ -43,28 +75,27 @@
         <!-- <span style="font-size:0.2em;"><a target="_blank" href="https://newyear.isoc.nl/2018/">Presented at the ISOC NL New Year 2018</a></span><br> -->
         <span style="font-size:0.2em;"><a target="_blank" href="http://searsia.org/blog/">Djoerd Hiemstra &lt;djoerd@searsia.org&gt;</a></span><br>
       </h1>
-
     </section>
 
     <section class="slide">
-<h2> A poem </h2>
+    <h2> A poem </h2>
       <ul style="list-style-type:none;">
       <li>
       <blockquote>
-roses are red<br>
-violets are blue<br>
-in surveillance capitalism<br>
-a poem reads you<br>
-&nbsp;<br>
-and shows you ads<br>
-for flower shops<br>
-and tracks your clicks<br>
-and never stops<br>
-...
-</blockquote>
-</li>
-<li><a href="https://cybre.space/@lifning/98835409973873638">@lifning@cybre.space</a></li>
-</ul>
+      roses are red<br>
+      violets are blue<br>
+      in surveillance capitalism<br>
+      a poem reads you<br>
+      &nbsp;<br>
+      and shows you ads<br>
+      for flower shops<br>
+      and tracks your clicks<br>
+      and never stops<br>
+      ...
+      </blockquote>
+      </li>
+      <li><a href="https://cybre.space/@lifning/98835409973873638">@lifning@cybre.space</a></li>
+      </ul>
     </section>
 
     <section class="slide">
@@ -72,22 +103,23 @@ and never stops<br>
     </section>
 
     <section class="slide">
-      <h2>1. To show targeted advertisements</h2>
+      <h2>1. To improve the service</h2>
       <ul style="list-style-type:none;">
-<li>
-<img src="images/isoc2018ad.jpg" alt="Advertisement in Google search" height="600">
-</li>
-<li style="text-align: center"><a href="http://www.topdesignmag.com/25-vintage-newspaper-ads-that-show-the-evolution-of-the-advertising-industry/">Beer advertisment (1902)</a></li>
-</ul>
+      <li><img src="images/isoc2018service.png" alt="Google autocompletions" height="600"></li>
+      <li style="text-align: center"><a href="https://google.com">Google search</a></li>
     </section>
 
 
     <section class="slide">
-      <h2>2. To improve the service</h2>
+      <h2>2. To show targeted advertisements</h2>
       <ul style="list-style-type:none;">
-<li><img src="images/isoc2018service.png" alt="A waiter providing good service" height="600"></li>
-<li style="text-align: center"><a href="https://openclipart.org/detail/77077/waiter">Image by shokunin</a></li>
+     <li>
+       <img src="images/isoc2018ad.jpg" alt="Old-fashioned news paper advertisement for pain killers" height="600">
+     </li>
+     <li style="text-align: center"><a href="http://www.topdesignmag.com/25-vintage-newspaper-ads-that-show-the-evolution-of-the-advertising-industry/">Vintage pain killer advertisement (1908)</a></li>
+     </ul>
     </section>
+
 
     <section class="slide">
       <h1>Searsia <img src="images/searsia-logo.png" style="height:1em;display:inline-block;vertical-align:bottom;margin-bottom:0.1em;"></h1>
@@ -105,11 +137,12 @@ and never stops<br>
     <section class="slide">
       <h2>Lawsuits over damaging autocompletions</h2>
       <ul style="list-style-type:none;">
-        <li class="slide" style="text-align:center;">Lawsuit France (<a href="https://searchengineland.com/google-loses-french-lawsuit-over-google-suggest-32994" target="_blank">2010</a>): "cnfdi arnaque"</li>
-        <li class="slide" style="text-align:center;">Lawsuit Italy (<a href="http://www.zdnet.com/article/google-loses-autocomplete-defamation-case-in-italy/" target="_blank">2011</a>): "[name] truffatore"</li>
-        <li class="slide" style="text-align:center;">Lawsuit Germany (<a href="https://techcrunch.com/2012/09/07/germanys-former-first-lady-sues-google-for-defamation-over-autocomplete-suggestions/" target="_blank">2012</a>): "bettina wulff prostituierte"</li>
-        <li class="slide" style="text-align:center;">Lawsuit Japan (<a href="http://www.bbc.com/news/technology-17510651" target="_blank">2012</a>): a search shows crimes committed by a man with the same name...</li>
-        <li class="slide" style="text-align:center;">...</li>
+        <li style="text-align:center;">Lawsuit France (<a href="https://searchengineland.com/google-loses-french-lawsuit-over-google-suggest-32994" target="_blank">2010</a>): "cnfdi arnaque"</li>
+        <li style="text-align:center;">Lawsuit Italy (<a href="http://www.zdnet.com/article/google-loses-autocomplete-defamation-case-in-italy/" target="_blank">2011</a>): "[name] truffatore"</li>
+        <li style="text-align:center;">Lawsuit Germany (<a href="https://techcrunch.com/2012/09/07/germanys-former-first-lady-sues-google-for-defamation-over-autocomplete-suggestions/" target="_blank">2012</a>): "bettina wulff prostituierte"</li>
+        <li style="text-align:center;">Lawsuit Japan (<a href="http://www.bbc.com/news/technology-17510651" target="_blank">2012</a>): a search shows crimes committed by a man with the same name...</li>
+       </ul>
+      <ul style="list-style-type:none;">
         <li class="slide" style="text-align:center;">Google update (<a href="https://blog.google/products/search/google-search-autocomplete/" target="_blank">2013</a>) filters offensive completions for person names.</li>
  
       </ul>
@@ -123,9 +156,9 @@ P. Baker and A. Potts (2013). <a href="http://eprints.lancs.ac.uk/63268/">Why do
         </li>  
         <li class="slide">
         <blockquote>
-Google can produce suggested terms which could be viewed as racist, sexist or homophobic (...)<br>
-2690 questions were elicited and then categorised according to the qualities they referenced (...)<br>
-Gay and black identities appeared to attract higher numbers of questions that were negatively stereotyping<br>&nbsp;<br>
+         Google can produce suggested terms which could be viewed as racist, sexist or homophobic (...)<br>
+        <!-- 2690 questions were elicited and then categorised according to the qualities they referenced (...)<br> -->
+         Gay and black identities appeared to attract higher numbers of questions that were negatively stereotyping<br>&nbsp;<br>
         </blokquote>
         </li>
       </ul>    
@@ -135,10 +168,10 @@ Gay and black identities appeared to attract higher numbers of questions that we
       <h2>Query recommendations without tracking</h2>
       <h3>Experiment:</h3>
       <ol>
-        <li><h3>Autocompletions from user data</h3>
-        query log by <a href="http://people.cs.georgetown.edu/~abdur/publications/pos-infoscale.pdf">Pass et al. (2006)</a></li>
         <li><h3>Autocompletions from web content</h3>
         anchor texts from the ClueWeb09 web crawl</li>
+        <li><h3>Autocompletions from user data</h3>
+        query log by <a href="http://people.cs.georgetown.edu/~abdur/publications/pos-infoscale.pdf">Pass et al. (2006)</a></li>
       </ol>
       <p>G. Pass, A. Chowdhury and C. Torgeson (2006) <a href="http://people.cs.georgetown.edu/~abdur/publications/pos-infoscale.pdf">A Picture of Search</a>. In:<br><em>Proceedings of the 1st international conference on Scalable information systems (InfoScale)</em>, 1-7</p>
       <p>
@@ -146,7 +179,7 @@ Gay and black identities appeared to attract higher numbers of questions that we
 
 
     <section class="slide">
-      <h2>Query autocompletions without tracking</h2>
+      <h2>Experimental results</h2>
       <ul style="list-style-type:none;">
         <li><img src="images/ia2017-results2.png" /></li>
         <li style="text-align:center;"><a href="http://searsia.org/blog/2017-03-18-query-suggestions-without-tracking-users/">http://searsia.org/blog/2017-03-18-query-suggestions-without-tracking-users/</a></li>
@@ -155,43 +188,37 @@ Gay and black identities appeared to attract higher numbers of questions that we
 
 
     <section class="slide">
-      <h2>NEXT: Search advertisements without tracking</h2>
-      <ul style="list-style-type:none;">
-        <li>
-        <blockquote>
-It is a myth that search engines need to track you to make money on Web search. When you type in a search, we can show an ad just based on that search term. For example, if you type in, "car" we show a car ad. That doesn't involve tracking because it is based on the keyword and not the person.<br>&nbsp;<br>
-        </blokquote>
-        </li>
-        <li>
-<a href="https://duck.co/help/company/advertising-and-affiliates">DuckDuckGo Advertising and Affiliates</a>
-        </li>  
+      <h1>Searsia <img src="images/searsia-logo.png" style="height:1em;display:inline-block;vertical-align:bottom;margin-bottom:0.1em;"></h1>
+    </section>
+
+
+    <section class="slide">
+      <h2>Query: <em>car</em></h2>
+      <img src="http://payload.cargocollective.com/1/1/54213/640260/01.jpg" height="600" alt="Ad for the Tesla Model S">  
+    </section>
+
+
+    <section class="slide">
+      <h2>Targeted advertisements by Searsia</h2>
+      <ul>
+        <li class="slide"> <h3>Based on the query, not on the person</h3> </li>
+        <li class="slide"> <h3>Local (proxied) banners and images</h3> </li>
+        <li class="slide"> <h3>No third party Javascript, Cookies, or web beacons</h3> </li>
+        <li class="slide"> <h3>No HTTP referrer with query terms</h3> </li>
       </ul>  
     </section>
 
 
+
     <section class="slide">
-<h2>Targeted advertisments using search</h2>
-      <ul style="list-style-type:none;">
-      <li>Connect to and search affiliate programs and networks </li>
-      <li> No third-party cookies or web beacons</li>
-      <li>No privacy leakage via images or clicks</li>
+      <h2>Affiliate programs and networks</h2>
+      <ul>
+      <li class="slide"><h3>Connect to APIs of big affiliate programs (e.g. Amazon)</h3> </li>
+      <li class="slide"><h3>Local search in data from affiliate networks (e.g. ShareASale)</h3></li>
+      <li class="slide"><h3>(Shows ads for charities if no results)</h3></li>
       </ul>
     </section>
 
-    <section class="slide">
-      <h2>Conclusion</h2>
-      <ul>
-      <li class="slide">
-        <h3>Targeted ads; <u>No tracking</u></h3>
-        Ads based on the search term, not on the person.
-      </li>
-      <li class="slide">
-        <h3>Autocompletions; <u>No tracking</u></h3>
-        Autocompletions based on anchor texts, not on people's queries.
-      </li>
-      </ul>
-    </section>
-    
 
     <section class="slide">
       <h2>Check it out!</h2>
@@ -210,6 +237,22 @@ It is a myth that search engines need to track you to make money on Web search. 
       </li>
       </ul>
     </section>
+
+
+    <section class="slide">
+      <h2>Conclusion</h2>
+      <ul>
+      <li class="slide">
+        <h3>Autocompletions; <u>No tracking</u></h3>
+        Autocompletions based on anchor texts, not on people's queries.
+      </li>
+      <li class="slide">
+        <h3>Targeted ads; <u>No tracking</u></h3>
+        Ads based on the search term, not on the person.
+      </li>
+      </ul>
+    </section>
+    
 
     <section class="slide">
       <h2>Acknowledgments</h2>
@@ -231,7 +274,6 @@ It is a myth that search engines need to track you to make money on Web search. 
       <h1>Thanks <img src="images/searsia-logo.png" style="height:1em;display:inline-block;vertical-align:bottom;margin-bottom:0.1em;">
       </h1>
     </section>
-
 
 
     <!-- End slides. -->
