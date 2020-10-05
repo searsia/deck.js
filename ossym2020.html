@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>Reducing Misinformation in Query Autocompletions</title>
+
+  <link rel="icon" href="images/rufavicon.png">
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/style/swiss.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/transition/horizontal-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="modernizr.custom.js"></script>
+
+  <!-- Facebook OpenGraph tags -->
+  <meta property="og:title" content="Reducing Misinformation in Query Autocompletions" />   
+  <meta property="og:description" content="Presented at OSSYM 2020">
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://www.cs.ru.nl/~hiemstra/deck.js/ossym2020.html" />
+  <meta property="og:image" content="http://www.cs.ru.nl/~hiemstra/deck.js/images/ru-logo.png" />
+  <link rel="canonical" href="http://www.cs.ru.nl/~hiemstra/deck.js/ossym2020.html#slide-0" />
+  
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@djoerd" />
+  <meta name="twitter:creator" content="@djoerd" />
+  <meta name="twitter:title" content="Reducing Misinformation in Query Autocompletions" />
+  <meta name="twitter:description" content="Presented at OSSYM 2020">
+  <meta name="twitter:image" content="http://www.cs.ru.nl/~hiemstra/deck.js/images/ru-logo.png" />
+
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+
+
+<!--
+
+My name is Djoerd Hiemstra. I am professor working on Federated Search
+at Radboud University, but today I will talk about work that I did 
+two years ago when a worked for the open source federated search engine 
+Searsia. 
+
+Let me first stress that I am really proud that I talk at this event. 
+Open Search is a really BIG deal for our society. Google has a monopoly
+on search, and has used it to control the advertising market, online
+videos, email, maps, our mobile phones, web browsers, and is trying to 
+get a hold on other things like tracking for COVID-19, and even storing
+our electronic health records, and "supporting democratic processes 
+around the world". European-based Open Search to counter Google's
+domination is a big deal.
+
+Technically, however, open search is not THAT big a deal. In my course
+on Information Retrieval I present a lecture where I ask students how much
+money they would need to start a competitor of Google. During the lecture
+I convince the students that your can run a web index with tens of 
+billions of web pages on a single desktop machine that you buy at the
+Aldi. (If someone else does the crawling)
+
+We have to restrict ourselves and
+  * Crawl and serve general web pages 
+  * To be used by Ecosia Qwant, Duckduckgo
+  * Do not log any user data;
+  * 
+
+
+
+
+-->
+
+    <section class="slide">
+      <h1 style="font-size:2.4em;">Reducing Misinformation in Query Autocompletions<br>
+        <!-- <span style="font-size:0.2em;"><a target="_blank" href="https://opensearchfoundation.org/en/2nd-international-symposium-on-open-search/">Presented at OSSYM 2020</a></span><br> -->
+        <span style="font-size:0.5em;"><img src="images/ru-logo.png" style="height:1.5em;display:inline-block;vertical-align:bottom;margin-bottom:0.1em;"> <a target="_blank" href="http://www.cs.ru.nl/~hiemstra">Djoerd Hiemstra &lt;hiemstra@cs.ru.nl&gt;</a><br>
+      </h1>
+    </section>
+
+    <section class="slide">
+    <h2 style="text-align:center"> Open Search is a BIG deal! </h2>
+    <ul style="list-style-type:none;">
+     <li> <img src="https://live.staticflickr.com/5223/5625708474_102cbb12e1_b.jpg" alt="'Earth Day 2011' by Cornelia Kopp is licensed under CC BY-ND 2.0" height="600"> </li>
+     <li style="text-align:center"><a href="https://search.creativecommons.org/photos/1257c3b8-42d6-4545-81ea-b8c169f82386">CC BY-ND 2.0 by Cornelia Kopp</a></li>
+    </ul>
+    </section>
+
+    <section class="slide">
+    <h2 style="text-align:center">... technically not THAT big a deal.</h2>
+    <ul style="list-style-type:none;">
+     <li> <img src="https://live.staticflickr.com/8482/8200880966_c3808de0b6_b.jpg" alt="'In the grocery with our little helpers.' by Jaro Larnos is licensed under CC BY 2.0" height="600"> </li>
+     <li style="text-align:center"><a href="https://search.creativecommons.org/photos/bf9e4e36-400b-49c7-be0a-74cdd34b0fe4">CC BY 2.0 by Jaro Larnos</a></li>
+    </ul>
+    </section>
+
+    <section class="slide">
+      <h2>1. "improve the service"</h2>
+      <ul style="list-style-type:none;">
+      <li><img src="images/isoc2018service.png" alt="Google autocompletions" height="600"></li>
+      <li style="text-align: center"><a href="https://google.com">Google search</a></li>
+      </ul>
+    </section>
+
+
+    <section class="slide">
+      <h2>2. Targeted advertisements</h2>
+      <ul style="list-style-type:none;">
+     <li>
+       <img src="images/isoc2018ad.jpg" alt="Old-fashioned news paper advertisement for pain killers" height="600">
+     </li>
+     <li style="text-align: center"><a href="http://www.topdesignmag.com/25-vintage-newspaper-ads-that-show-the-evolution-of-the-advertising-industry/">Vintage pain killer advertisement (1908)</a></li>
+     </ul>
+    </section>
+
+
+    <section class="slide">
+      <h2> Harmful Autocompletions </h2>
+      <ul style="list-style-type:none;">
+        <li class="slide"><img src="images/ia2017-autocompletion1.png" style="height:280px"/></li>
+        <li class="slide">C. Cadwalladr (2016) <a href=" https://www.theguardian.com/commentisfree/2016/dec/11/google-frames-shapes-and-distorts-how-we-see-world">Google is not ‘just’ a platform. It frames, shapes and distorts how we see the world</a>. The Guardian. 11 December 2016.</li>
+      </ul>    
+    </section>
+
+    <section class="slide">
+      <h2>Lawsuits over autocompletions</h2>
+      <ul style="list-style-type:none;">
+        <li style="text-align:center;">Lawsuit France (<a href="https://searchengineland.com/google-loses-french-lawsuit-over-google-suggest-32994" target="_blank">2010</a>): "cnfdi arnaque"</li>
+        <li style="text-align:center;">Lawsuit Italy (<a href="http://www.zdnet.com/article/google-loses-autocomplete-defamation-case-in-italy/" target="_blank">2011</a>): "[name] truffatore"</li>
+        <li style="text-align:center;">Lawsuit Germany (<a href="https://techcrunch.com/2012/09/07/germanys-former-first-lady-sues-google-for-defamation-over-autocomplete-suggestions/" target="_blank">2012</a>): "bettina wulff prostituierte"</li>
+        <li style="text-align:center;">Lawsuit Japan (<a href="http://www.bbc.com/news/technology-17510651" target="_blank">2012</a>): a search shows crimes committed by a man with the same name...</li>
+       </ul>
+      <ul style="list-style-type:none;">
+        <li class="slide" style="text-align:center;">Google update (<a href="https://blog.google/products/search/google-search-autocomplete/" target="_blank">2013</a>) filters offensive completions for person names.</li>
+ 
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Autocompletion Stereotypes</h2>
+      <ul style="list-style-type:none;">
+        <li class="slide">
+P. Baker and A. Potts (2013). <a href="http://eprints.lancs.ac.uk/63268/">Why do White people have thin lips? Google and the perpetuation of stereotypes via auto-complete search forms</a>. Critical Discourse Studies 10(2), 187–204.
+        </li>  
+        <li class="slide">
+        <blockquote style="font-size:1.4em;">
+         Google can produce suggested terms which could be viewed as racist, sexist or homophobic (...)<br>
+        <!-- 2690 questions were elicited and then categorised according to the qualities they referenced (...)<br> -->
+         Gay and black identities appeared to attract higher numbers of questions that were negatively stereotyping<br>&nbsp;<br>
+        </blockquote>
+        </li>
+      </ul>    
+    </section>
+
+    <section class="slide">
+      <h2>Experiment design</h2>
+      <p> &nbsp; </p>
+      <ol>
+        <li>Autocompletions from web content:<br>
+        anchor texts from the ClueWeb09 web crawl<br>
+        by <a href="http://boston.lti.cs.cmu.edu/Data/clueweb09">Callan and Hoy (2009)</a></li>
+        <li>Autocompletions from user data:<br>
+        query log by <a href="http://people.cs.georgetown.edu/~abdur/publications/pos-infoscale.pdf">Pass et al. (2006)</a></li>
+      </ol>
+      <p>  &nbsp; </p>
+    </section>
+
+
+    <section class="slide">
+      <h2 style="text-align:center">Experimental results</h2>
+      <ul style="list-style-type:none;">
+        <li><img src="images/ia2017-results2.png" /></li>
+      </ul>
+    </section>
+
+
+    <section class="slide">
+      <h2>Conclusion</h2>
+      <ul>
+      <li class="slide">
+        Query autocompletions based on content, not on tracking people's
+        queries
+      </li>
+      <li class="slide"><a href="https://arxiv.org/abs/2007.02620v2">Djoerd Hiemstra (2020), arXiv 2007.02620v2</a></li>
+
+      </ul>
+    </section>
+    
+
+    <section class="slide">
+      <h2>Acknowledgments</h2>
+      <ul style="list-style-type:none;">
+      <li>
+        <img src="images/sponsor-vietschfoundation.png" style="height:3em; display:inline; margin:0.5em; vertical-align:middle">
+      </li>
+      <li>
+        <img src="images/sponsor-nlnet.png" style="height:3em; display:inline; margin:0.5em; vertical-align:middle">
+      </li>
+      <li>
+        <img src="images/sponsor-ru.png" style="height:3em; display:inline; margin:0.5em; vertical-align:middle">
+      </li>
+      </ul>
+    </section>
+
+
+    <section class="slide">
+      <h1>Thanks <img src="images/ru-logo.png" style="height:1em;display:inline-block;vertical-align:bottom;margin-bottom:0.1em;">
+      </h1>
+    </section>
+
+
+    <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
+
+    <!-- deck.status snippet -->
+    <p class="deck-status" aria-role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="jquery.min.js"></script>
+<script src="core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
