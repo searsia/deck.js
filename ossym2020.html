@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=1024, user-scalable=no">
 
   <title>Reducing Misinformation in Query Autocompletions</title>
@@ -56,32 +56,67 @@
 
 <!--
 
-My name is Djoerd Hiemstra. I am professor working on Federated Search
-at Radboud University, but today I will talk about work that I did 
-two years ago when a worked for the open source federated search engine 
-Searsia. 
+My name is Djoerd Hiemstra. I am a professor working on Federated Search
+at Radboud University together with Arjen de Vries, who gave a keynote on 
+Monday. 
 
-Let me first stress that I am really proud that I talk at this event. 
+Let me first stress that I am really proud to talk at this event. 
 Open Search is a really BIG deal for our society. Google has a monopoly
-on search, and has used it to control the advertising market, online
-videos, email, maps, our mobile phones, web browsers, and is trying to 
-get a hold on other things like tracking for COVID-19, and even storing
-our electronic health records, and "supporting democratic processes 
-around the world". European-based Open Search to counter Google's
-domination is a big deal.
+on search in Europe, and has used it to control the advertising market, 
+online videos, email, maps, our mobile phones, web browsers, 
+European-based Open Search to counter Google's domination is a big deal.
 
-Technically, however, open search is not THAT big a deal. In my course
-on Information Retrieval I present a lecture where I ask students how much
-money they would need to start a competitor of Google. During the lecture
-I convince the students that your can run a web index with tens of 
-billions of web pages on a single desktop machine that you buy at the
-Aldi. (If someone else does the crawling)
+Arjen quoted the US anti-trust report on Monday that competing on
+web search is also really hard for two reasons:
+  1.  Need massive investments of servers for crawling and indexing
+  2.  We do not have the re-inforcing advantages of click and query data 
 
-We have to restrict ourselves and
-  * Crawl and serve general web pages 
-  * To be used by Ecosia Qwant, Duckduckgo
-  * Do not log any user data;
-  * 
+When Brin and Page built Google, they were also told they would need
+massive investments to compete with AltaVista. At the time
+AltaVista ran on Digital's supercomputers.
+Here's a picture of the first version of Google from 1997 or 1998
+at Stanford University. It searched 24 million pages.
+This is 22 years ago. Since that time, storage capacity per euro
+has doubled every 1.5 or 2 years, nicely following Moore's law.
+We are now at least 11 such doublings further, so with similar
+effort, two PhD students at Halle-Wittenberg and Leipzig University 
+should be able to build a search engine for more than 50 billion pages.
+If they focus on the right things.
+We don't need billions of euros for servers.
+Now, do we really need those queries and clicks? as suggested by
+de US anti-trust documement...
+
+Google will tell you that 
+queries and clicks are essential for "improving the service". 
+For instance, to improve query autocompletions, as shown here.
+
+
+But that's also marketing. They will also tell you that queries 
+and clicks are essential for targetted advertisements. This is a 
+advertisement for a pain killer from a newspaper of more than 100 
+years ago. This ad was seen by many people who were not in pain.
+Google will tell you they know who of the users is in pain, 
+or vulnerable, or depressed, and only those users will see the
+pain killer ad.
+Maybe this is the real reason that they need your queries and
+clicks?
+
+
+
+Let's find out and get back to query autocompletions, because 
+1) autocompletions are great, and 
+2) they really need logs of user queries.
+Well, first of all, autocompletions are not so great. 
+There are many example of autocompletions that direct 
+users to harmful content, such as holocaust denial
+Carole Cadwalladr
+Guardian articles
+
+Actually, by 2016, there were numerous lawsuites over auto-
+completions
+lawsuites over Google's autocompletions...
+Google tries to limit negative autocompletions for person names
+
 
 
 
@@ -91,7 +126,7 @@ We have to restrict ourselves and
     <section class="slide">
       <h1 style="font-size:2.4em;">Reducing Misinformation in Query Autocompletions<br>
         <!-- <span style="font-size:0.2em;"><a target="_blank" href="https://opensearchfoundation.org/en/2nd-international-symposium-on-open-search/">Presented at OSSYM 2020</a></span><br> -->
-        <span style="font-size:0.5em;"><img src="images/ru-logo.png" style="height:1.5em;display:inline-block;vertical-align:bottom;margin-bottom:0.1em;"> <a target="_blank" href="http://www.cs.ru.nl/~hiemstra">Djoerd Hiemstra &lt;hiemstra@cs.ru.nl&gt;</a><br>
+	<span style="font-size:0.5em;"><img src="images/ru-logo.png" alt="" style="height:1.5em;display:inline-block;vertical-align:bottom;margin-bottom:0.1em;"> <a target="_blank" href="http://www.cs.ru.nl/~hiemstra">Djoerd Hiemstra &lt;hiemstra@cs.ru.nl&gt;</a><br></span>
       </h1>
     </section>
 
@@ -106,13 +141,13 @@ We have to restrict ourselves and
     <section class="slide">
     <h2 style="text-align:center">... technically not THAT big a deal.</h2>
     <ul style="list-style-type:none;">
-     <li> <img src="https://live.staticflickr.com/8482/8200880966_c3808de0b6_b.jpg" alt="'In the grocery with our little helpers.' by Jaro Larnos is licensed under CC BY 2.0" height="600"> </li>
-     <li style="text-align:center"><a href="https://search.creativecommons.org/photos/bf9e4e36-400b-49c7-be0a-74cdd34b0fe4">CC BY 2.0 by Jaro Larnos</a></li>
+     <li> <img src="images/google1997.jpg" alt="Google 1997" height="600"> </li>
+     <li style="text-align:center"><a href="http://research.google.com/people/jeff/WSDM09-keynote.pdf">"Google 1997" (Dean 2009)</a></li>
     </ul>
     </section>
 
     <section class="slide">
-      <h2>1. "improve the service"</h2>
+      <h2>1. To improve the service</h2>
       <ul style="list-style-type:none;">
       <li><img src="images/isoc2018service.png" alt="Google autocompletions" height="600"></li>
       <li style="text-align: center"><a href="https://google.com">Google search</a></li>
@@ -134,7 +169,7 @@ We have to restrict ourselves and
     <section class="slide">
       <h2> Harmful Autocompletions </h2>
       <ul style="list-style-type:none;">
-        <li class="slide"><img src="images/ia2017-autocompletion1.png" style="height:280px"/></li>
+        <li class="slide"><img src="images/ia2017-autocompletion1.png" style="height:280px" alt="Autocompletion example"/></li>
         <li class="slide">C. Cadwalladr (2016) <a href=" https://www.theguardian.com/commentisfree/2016/dec/11/google-frames-shapes-and-distorts-how-we-see-world">Google is not ‘just’ a platform. It frames, shapes and distorts how we see the world</a>. The Guardian. 11 December 2016.</li>
       </ul>    
     </section>
@@ -145,7 +180,7 @@ We have to restrict ourselves and
         <li style="text-align:center;">Lawsuit France (<a href="https://searchengineland.com/google-loses-french-lawsuit-over-google-suggest-32994" target="_blank">2010</a>): "cnfdi arnaque"</li>
         <li style="text-align:center;">Lawsuit Italy (<a href="http://www.zdnet.com/article/google-loses-autocomplete-defamation-case-in-italy/" target="_blank">2011</a>): "[name] truffatore"</li>
         <li style="text-align:center;">Lawsuit Germany (<a href="https://techcrunch.com/2012/09/07/germanys-former-first-lady-sues-google-for-defamation-over-autocomplete-suggestions/" target="_blank">2012</a>): "bettina wulff prostituierte"</li>
-        <li style="text-align:center;">Lawsuit Japan (<a href="http://www.bbc.com/news/technology-17510651" target="_blank">2012</a>): a search shows crimes committed by a man with the same name...</li>
+        <li style="text-align:center;">Lawsuit Japan (<a href="http://www.bbc.com/news/technology-17510651" target="_blank">2012</a>): shows crimes by a man with the same name...</li>
        </ul>
       <ul style="list-style-type:none;">
         <li class="slide" style="text-align:center;">Google update (<a href="https://blog.google/products/search/google-search-autocomplete/" target="_blank">2013</a>) filters offensive completions for person names.</li>
@@ -186,7 +221,7 @@ P. Baker and A. Potts (2013). <a href="http://eprints.lancs.ac.uk/63268/">Why do
     <section class="slide">
       <h2 style="text-align:center">Experimental results</h2>
       <ul style="list-style-type:none;">
-        <li><img src="images/ia2017-results2.png" /></li>
+        <li><img src="images/ia2017-results2.png" alt="Tables with results" /></li>
       </ul>
     </section>
 
@@ -195,33 +230,46 @@ P. Baker and A. Potts (2013). <a href="http://eprints.lancs.ac.uk/63268/">Why do
       <h2>Conclusion</h2>
       <ul>
       <li class="slide">
-        Query autocompletions based on content, not on tracking people's
-        queries
+        Better prediction for longer queries...
       </li>
-      <li class="slide"><a href="https://arxiv.org/abs/2007.02620v2">Djoerd Hiemstra (2020), arXiv 2007.02620v2</a></li>
-
+      <li class="slide">... but need another key-stroke for short queries</li>
+      <li class="slide">Improvements:
+	      <ul> <li>Ask users about the usefulness of autocompletions</li>
+		      <li>Ask users about the ethics of autocompletions</li>
+		      <li>Linguistic knowledge to improve predictions</li>
+		      <li>PageRank and Spam scores to improve ethics<br>(links can also be manipulated)</li>
+	      </ul>
+      <li class="slide">
+	      <img src="images/openaccess.png" style="height:1em;display:inline-block;vertical-align:bottom;margin-bottom:0.1em;">
+	      <a href="https://arxiv.org/abs/2007.02620v2">arXiv 2007.02620v2</a></li>
       </ul>
     </section>
     
+    <section class="slide">
+	    <h2>Open Search Outlook</h2>
+	    <ul>
+		    <li class="slide">Research challenge: <strong>Content</strong> beats behavioral data!</li>
+		    <li class="slide">Do <strong>NOT</strong> track users/queries/clicks; </li>
+		    <li class="slide">Others (Ecosia, Qwant, Startpage) will add cool features.</li>
+		    <li class="slide">Research challenge: <strong>Federated search</strong>  beats monolithic engines</li>
+            </ul>
+    </section>
+
 
     <section class="slide">
       <h2>Acknowledgments</h2>
       <ul style="list-style-type:none;">
-      <li>
-        <img src="images/sponsor-vietschfoundation.png" style="height:3em; display:inline; margin:0.5em; vertical-align:middle">
+	      <li><a href="http://searsia.org"><img src="images/sponsor-searsia.png" style="height:3em; display:inline; margin:0.5em; vertical-align:middle" alt="Searsia"></a></li>
+	      <li><a href="http://www.vietsch-foundation.org"><img src="images/sponsor-vietschfoundation.png" style="height:3em; display:inline; margin:0.5em; vertical-align:middle" alt="Vietsch Foundation"></a>
       </li>
-      <li>
-        <img src="images/sponsor-nlnet.png" style="height:3em; display:inline; margin:0.5em; vertical-align:middle">
-      </li>
-      <li>
-        <img src="images/sponsor-ru.png" style="height:3em; display:inline; margin:0.5em; vertical-align:middle">
+      <li><a href="https://nlnet.nl/"><img src="images/sponsor-nlnet.png" style="height:3em; display:inline; margin:0.5em; vertical-align:middle" alt="NLnet Foundation"></a>
       </li>
       </ul>
     </section>
 
 
     <section class="slide">
-      <h1>Thanks <img src="images/ru-logo.png" style="height:1em;display:inline-block;vertical-align:bottom;margin-bottom:0.1em;">
+      <h1>Thanks <img src="images/ru-logo.png" alt="" style="height:1em;display:inline-block;vertical-align:bottom;margin-bottom:0.1em;">
       </h1>
     </section>
 
@@ -273,3 +321,4 @@ P. Baker and A. Potts (2013). <a href="http://eprints.lancs.ac.uk/63268/">Why do
 </script>
 </body>
 </html>
+
